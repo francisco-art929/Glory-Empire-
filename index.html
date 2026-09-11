@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  
+  <!-- Primary Production SEO Meta Tags -->
+  <title>Glory Empire | Premium Retail, VIP & Wholesale Marketplace Ghana</title>
+  <meta name="title" content="Glory Empire | Premium Retail, VIP & Wholesale Marketplace Ghana">
+  <meta name="description" content="Shop high-quality trending fashion, dresses, sandals, electronics, perfumes, and luxury accessories at unbeatable wholesale and VIP prices across Ghana. Fast delivery nationwide.">
+  <meta name="keywords" content="Glory Empire, wholesale Ghana, online shopping Kumasi, electronics Ghana, VIP shopping membership, wholesale electronics Accra, dresses Ghana">
+  <meta name="author" content="Glory Empire">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph / Facebook / WhatsApp Preview -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://gloryempire.vercel.app/">
+  <meta property="og:title" content="Glory Empire - Exclusive VIP & Wholesale Shopping">
+  <meta property="og:description" content="Unlock wholesale and VIP member discounts on luxury accessories, trending gadgets, and fashion across Ghana.">
+  <meta property="og:image" content="https://gloryempire.vercel.app/assets/og-preview.jpg">
+
+  <!-- Twitter Meta Tags -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://gloryempire.vercel.app/">
+  <meta property="twitter:title" content="Glory Empire - Exclusive VIP & Wholesale Shopping">
+  <meta property="twitter:description" content="Unlock wholesale and VIP member discounts on luxury accessories, trending gadgets, and fashion across Ghana.">
+  <meta property="twitter:image" content="https://gloryempire.vercel.app/assets/og-preview.jpg">
+
+  <!-- Favicons & Web Manifest (PWA Setup) -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="theme-color" content="#E63946">
+
+  <!-- Third-Party SDKs & CDNs -->
+  <script src="https://js.paystack.co/v1/inline.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Tailwind Configuration -->
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              DEFAULT: '#E63946', // High-conversion Accent Red/Orange
+              dark: '#C5221F',
+              gold: '#D4AF37'    // VIP Badge Accent
+            }
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    /* Custom Hide Scrollbar Helper */
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-900 dark:bg-gray-950 dark:text-gray-100 transition-colors duration-200">
+
+  <!-- TOP HEADER & NAVIGATION -->
+  <header class="sticky top-0 z-40 bg-white/95 dark:bg-gray-900/95 backdrop-blur border-b border-gray-200 dark:border-gray-800">
+    <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between gap-3">
+      
+      <!-- Logo -->
+      <a href="#" class="flex items-center gap-2 text-xl font-black tracking-tight text-gray-900 dark:text-white">
+        <span class="bg-brand text-white px-2 py-1 rounded-lg text-sm font-bold">GE</span>
+        <span>Glory Empire</span>
+      </a>
+
+      <!-- Live Search Bar -->
+      <div class="flex-1 max-w-md relative hidden sm:block">
+        <input type="text" id="searchInput" placeholder="Search dresses, sandals, tech, chains..." 
+               class="w-full pl-10 pr-4 py-2 text-sm bg-gray-100 dark:bg-gray-800 rounded-full border-none focus:ring-2 focus:ring-brand focus:outline-none">
+        <svg class="w-4 h-4 absolute left-3.5 top-3 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+      </div>
+
+      <!-- Action Icons & Three-Dot Drawer Trigger -->
+      <div class="flex items-center gap-3">
+        <button id="wishlistBtn" class="relative p-2 text-gray-600 dark:text-gray-300 hover:text-brand">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+          <span id="wishlistBadge" class="absolute -top-1 -right-1 bg-brand text-white text-xs font-bold w-5 h-5 flex items-center justify-center rounded-full">0</span>
+        </button>
+
+        <button id="cartBtn" class="relative p-2 text-gray-600 dark:text-gray-300 hover:text-brand">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+          <span id="cartBadge" class="absolute -top-1 -right-1 bg-brand text-white text-xs font-bold w-5 h-5 flex items-center justify-center rounded-full">0</span>
+        </button>
+
+        <!-- Three-Dot Menu Button -->
+        <button id="menuTriggerBtn" class="p-2 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg">
+          <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/></svg>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- CATEGORY STRIP -->
+  <nav class="bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800 overflow-x-auto no-scrollbar py-2.5">
+    <div class="max-w-7xl mx-auto px-4 flex gap-2 text-sm font-medium whitespace-nowrap">
+      <button class="category-pill active bg-brand text-white px-4 py-1.5 rounded-full">All Items</button>
+      <button class="category-pill bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 px-4 py-1.5 rounded-full hover:bg-gray-200">Footwear & Sandals</button>
+      <button class="category-pill bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 px-4 py-1.5 rounded-full hover:bg-gray-200">Phones & Laptops</button>
+      <button class="category-pill bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 px-4 py-1.5 rounded-full hover:bg-gray-200">Chains & Accessories</button>
+      <button class="category-pill bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 px-4 py-1.5 rounded-full hover:bg-gray-200">Perfumes & Beauty</button>
+    </div>
+  </nav>
+
+  <!-- MAIN CATALOG CONTENT -->
+  <main class="max-w-7xl mx-auto px-4 py-8 space-y-12">
+    
+    <!-- VIP BANNER -->
+    <section class="bg-gradient-to-r from-gray-900 via-gray-800 to-black text-white rounded-2xl p-6 shadow-xl relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-6">
+      <div class="space-y-2 text-center md:text-left z-10">
+        <span class="bg-brand-gold text-black text-xs font-black uppercase px-2.5 py-1 rounded-full">Monthly VIP Club</span>
+        <h2 class="text-2xl md:text-3xl font-black">Become a Glory Empire VIP Member</h2>
+        <p class="text-gray-300 text-sm max-w-xl">Unlock extra product discounts, priority express delivery, and wholesale reserve stock for just <strong class="text-white font-bold">GH₵ 50.00 / month</strong>.</p>
+      </div>
+      <button id="joinVipBtn" class="bg-brand-gold hover:bg-yellow-400 text-black font-extrabold px-6 py-3 rounded-xl shadow-lg transition transform hover:-translate-y-0.5 whitespace-nowrap">
+        Join VIP Club Now
+      </button>
+    </section>
+
+    <!-- PRODUCT GRID & SEARCH FILTERING CONTAINER -->
+    <section>
+      <div class="flex items-center justify-between mb-4">
+        <h3 class="text-xl font-black text-gray-900 dark:text-white">Featured Products</h3>
+        <span class="text-xs text-gray-500">Retail & Wholesale Available</span>
+      </div>
+
+      <!-- SEARCH & CATEGORY FILTERING SECTION -->
+      <div class="max-w-7xl mx-auto pt-2 pb-6 space-y-3">
+        <!-- Mobile Search Input -->
+        <div class="relative sm:hidden">
+          <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-gray-400">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+            </svg>
+          </div>
+          <input type="text" id="mobileSearchInput" placeholder="Search products, brands, or categories..." 
+                 class="w-full pl-10 pr-10 py-2.5 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-xl text-xs font-medium text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brand focus:border-transparent transition shadow-sm">
+          <button id="clearSearchBtn" class="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 hidden">
+            ✕
+          </button>
+        </div>
+
+        <!-- Horizontal Scrollable Category Chips -->
+        <div class="flex items-center justify-between gap-2">
+          <div id="categoryChips" class="flex items-center gap-2 overflow-x-auto pb-1 no-scrollbar w-full">
+            <!-- Category chips dynamically injected via JavaScript -->
+          </div>
+        </div>
+
+        <!-- Filter Status & Results Counter -->
+        <div class="flex items-center justify-between text-[11px] text-gray-500 dark:text-gray-400 px-1 pt-1">
+          <span>Showing <strong id="resultsCount" class="text-gray-900 dark:text-white font-bold">0</strong> products</span>
+          <span id="activeFilterLabel" class="hidden text-brand font-semibold">Filter active</span>
+        </div>
+      </div>
+
+      <!-- Product Grid -->
+      <div id="productGrid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
+        <!-- Products will populate dynamically via app.js -->
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800 pt-12 pb-8 text-sm">
+    <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8">
+      <div>
+        <h4 class="font-black text-lg mb-3">Glory Empire</h4>
+        <p class="text-gray-500 dark:text-gray-400 text-xs leading-relaxed">Your premier store for fashion, accessories, electronics, and beauty. Retail and wholesale delivered nationwide across Ghana.</p>
+      </div>
+      <div>
+        <h5 class="font-bold mb-3">Customer Help</h5>
+        <ul class="space-y-2 text-gray-500 dark:text-gray-400 text-xs">
+          <li><a href="#" class="hover:text-brand">How to Order</a></li>
+          <li><a href="#" class="hover:text-brand">Local Delivery Rates</a></li>
+          <li><a href="#" class="hover:text-brand">Monthly VIP Membership</a></li>
+          <li><a href="#" class="hover:text-brand">Wholesale Bulk Deals</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5 class="font-bold mb-3">Legal & Policies</h5>
+        <ul class="space-y-2 text-gray-500 dark:text-gray-400 text-xs">
+          <li><a href="#" class="hover:text-brand">Terms & Conditions</a></li>
+          <li><a href="#" class="hover:text-brand">Privacy Policy</a></li>
+          <li><a href="#" class="hover:text-brand">Return & Exchange Policy</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5 class="font-bold mb-3">Contact Us</h5>
+        <ul class="space-y-2 text-gray-500 dark:text-gray-400 text-xs">
+          <li>📞 Call: +233 54 095 2697</li>
+          <li>💬 WhatsApp: +233 54 095 2697</li>
+          <li>📍 Delivery Hub: Ghana</li>
+        </ul>
+      </div>
+    </div>
+    <div class="max-w-7xl mx-auto px-4 mt-8 pt-6 border-t border-gray-100 dark:border-gray-800 text-center text-xs text-gray-400">
+      © 2026 Glory Empire. All Rights Reserved.
+    </div>
+  </footer>
+
+  <!-- THREE-DOT CORNER DRAWER MENU OVERLAY -->
+  <div id="drawerOverlay" class="fixed inset-0 bg-black/50 z-50 hidden transition-opacity">
+    <div id="drawerPanel" class="fixed top-0 right-0 h-full w-80 max-w-full bg-white dark:bg-gray-900 shadow-2xl p-6 flex flex-col justify-between overflow-y-auto transition-transform transform translate-x-full">
+      
+      <div>
+        <!-- Drawer Header -->
+        <div class="flex items-center justify-between pb-4 border-b border-gray-200 dark:border-gray-800">
+          <div class="flex items-center gap-2">
+            <span class="bg-brand text-white px-2 py-1 rounded-md text-xs font-bold">GE</span>
+            <h3 class="font-black text-lg text-gray-900 dark:text-white">Glory Empire Menu</h3>
+          </div>
+          <button id="closeDrawerBtn" class="text-gray-500 hover:text-gray-900 dark:hover:text-white p-1">
+            ✕
+          </button>
+        </div>
+
+        <!-- User Account Section -->
+        <div class="py-4 border-b border-gray-200 dark:border-gray-800">
+          <div class="flex items-center gap-3 mb-3">
+            <div class="w-10 h-10 rounded-full bg-gray-200 dark:bg-gray-700 flex items-center justify-center font-bold text-gray-700 dark:text-gray-200" id="drawerAvatar">
+              👤
+            </div>
+            <div>
+              <h4 class="font-bold text-sm text-gray-900 dark:text-white" id="drawerUserName">Guest Buyer</h4>
+              <p class="text-xs text-amber-600 dark:text-amber-400 font-semibold" id="drawerVipStatus">Status: Standard Member</p>
+            </div>
+          </div>
+          <div class="grid grid-cols-2 gap-2">
+            <button id="openAuthBtn" class="bg-brand text-white text-xs font-bold py-2 rounded-lg text-center hover:bg-brand-dark transition">
+              Login / Register
+            </button>
+            <button id="logoutBtn" class="bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 text-xs font-bold py-2 rounded-lg text-center hover:bg-gray-200 hidden">
+              🚪 Log Out
+            </button>
+          </div>
+        </div>
+
+        <!-- Navigation Links -->
+        <nav class="py-4 space-y-1">
+          <button id="menuVipHubBtn" class="w-full text-left px-3 py-2.5 rounded-lg text-sm font-semibold flex items-center gap-2 text-amber-600 dark:text-amber-400 hover:bg-amber-50 dark:hover:bg-amber-950/30">
+            👑 Monthly VIP Club
+          </button>
+          <button id="menuSettingsBtn" class="w-full text-left px-3 py-2.5 rounded-lg text-sm font-semibold flex items-center gap-2 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800">
+            ⚙️ General Settings
+          </button>
+          <button id="menuWholesaleBtn" class="w-full text-left px-3 py-2.5 rounded-lg text-sm font-semibold flex items-center gap-2 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800">
+            📦 Reseller & Wholesale Hub
+          </button>
+          <button id="menuAdminBtn" class="w-full text-left px-3 py-2.5 rounded-lg text-sm font-semibold flex items-center gap-2 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800">
+            🔒 Admin Dashboard
+          </button>
+        </nav>
+      </div>
+
+      <!-- Drawer Footer Info -->
+      <div class="pt-4 border-t border-gray-200 dark:border-gray-800 text-xs text-gray-400 text-center">
+        Glory Empire v1.0 • Ghana Delivery
+      </div>
+    </div>
+  </div>
+
+  <!-- GENERAL SETTINGS MODAL -->
+  <div id="settingsModal" class="fixed inset-0 bg-black/50 z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-white dark:bg-gray-900 rounded-2xl max-w-md w-full p-6 shadow-2xl border border-gray-200 dark:border-gray-800">
+      <div class="flex items-center justify-between pb-4 border-b border-gray-200 dark:border-gray-800">
+        <h3 class="font-black text-lg text-gray-900 dark:text-white">⚙️ General Settings</h3>
+        <button id="closeSettingsBtn" class="text-gray-500 hover:text-gray-900 dark:hover:text-white">✕</button>
+      </div>
+
+      <div class="py-4 space-y-4">
+        <!-- Dark Mode Switch -->
+        <div class="flex items-center justify-between">
+          <div>
+            <h4 class="font-bold text-sm text-gray-900 dark:text-white">Dark Theme Mode</h4>
+            <p class="text-xs text-gray-500">Switch between light and dark visual themes</p>
+          </div>
+          <button id="darkModeToggle" class="w-12 h-6 bg-gray-300 dark:bg-brand rounded-full p-1 transition duration-200 flex items-center justify-start dark:justify-end">
+            <div class="w-4 h-4 bg-white rounded-full shadow-md"></div>
+          </button>
+        </div>
+
+        <!-- Delivery Town Preference -->
+        <div>
+          <label class="block font-bold text-sm text-gray-900 dark:text-white mb-1">Default Delivery Town/City</label>
+          <input type="text" id="settingCityInput" placeholder="e.g. Kumasi, Accra, Sunyani" 
+                 class="w-full p-2.5 text-sm bg-gray-100 dark:bg-gray-800 rounded-lg border-none focus:ring-2 focus:ring-brand focus:outline-none">
+        </div>
+
+        <!-- Store Currency -->
+        <div>
+          <label class="block font-bold text-sm text-gray-900 dark:text-white mb-1">Store Currency Display</label>
+          <select id="settingCurrencySelect" class="w-full p-2.5 text-sm bg-gray-100 dark:bg-gray-800 rounded-lg border-none focus:ring-2 focus:ring-brand focus:outline-none">
+            <option value="GH₵">GH₵ (Ghana Cedi)</option>
+            <option value="USD $">USD ($ Dollar)</option>
+          </select>
+        </div>
+      </div>
+
+      <button id="saveSettingsBtn" class="w-full bg-brand text-white font-bold py-2.5 rounded-lg text-sm hover:bg-brand-dark transition">
+        Save Preferences
+      </button>
+    </div>
+  </div>
+
+  <!-- PRODUCT DETAIL MODAL -->
+  <div id="productDetailModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden flex items-end sm:items-center justify-center p-0 sm:p-4 transition-opacity">
+    <div class="bg-white dark:bg-gray-900 rounded-t-2xl sm:rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto p-5 sm:p-6 shadow-2xl border border-gray-200 dark:border-gray-800 flex flex-col justify-between">
+      
+      <!-- Modal Header -->
+      <div class="flex items-center justify-between pb-3 border-b border-gray-100 dark:border-gray-800">
+        <span id="pDetailCategory" class="text-xs font-bold uppercase tracking-wider text-brand">Category</span>
+        <button id="closeProductModalBtn" class="text-gray-400 hover:text-gray-900 dark:hover:text-white text-lg p-1">✕</button>
+      </div>
+
+      <!-- Modal Content Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 py-4">
+        
+        <!-- Image Gallery Column -->
+        <div>
+          <div class="relative aspect-square bg-gray-100 dark:bg-gray-800 rounded-xl overflow-hidden mb-3 border border-gray-200 dark:border-gray-700">
+            <img id="pDetailMainImage" src="" alt="Product Preview" class="w-full h-full object-cover transition duration-200">
+            <span id="pDetailBadge" class="absolute top-2 left-2 bg-black text-white text-[10px] font-bold px-2 py-0.5 rounded-md">Badge</span>
+          </div>
+          <!-- Image Thumbnails Grid -->
+          <div id="pDetailThumbnails" class="flex items-center gap-2 overflow-x-auto pb-1">
+            <!-- Dynamically populated thumbnails -->
+          </div>
+        </div>
+
+        <!-- Specs & Selection Column -->
+        <div class="flex flex-col justify-between">
+          <div>
+            <h2 id="pDetailTitle" class="text-lg font-black text-gray-900 dark:text-white leading-snug">Product Title</h2>
+            <p id="pDetailDescription" class="text-xs text-gray-500 dark:text-gray-400 mt-2 leading-relaxed">Product description goes here...</p>
+
+            <!-- Pricing Tier Callout -->
+            <div class="mt-4 p-3 bg-gray-50 dark:bg-gray-800/50 rounded-xl border border-gray-200 dark:border-gray-700 space-y-1">
+              <div class="flex items-baseline justify-between">
+                <span class="text-xs text-gray-400">Retail Price:</span>
+                <span id="pDetailRetailPrice" class="text-sm font-bold text-gray-700 dark:text-gray-300">GH₵ 0.00</span>
+              </div>
+              <div class="flex items-baseline justify-between text-amber-600 dark:text-amber-400">
+                <span class="text-xs font-semibold">👑 VIP Subscription Price:</span>
+                <span id="pDetailVipPrice" class="text-sm font-black">GH₵ 0.00</span>
+              </div>
+              <div class="flex items-baseline justify-between text-gray-500 dark:text-gray-400">
+                <span class="text-xs">📦 Wholesale Price:</span>
+                <span id="pDetailWholesalePrice" class="text-xs font-semibold">GH₵ 0.00</span>
+              </div>
+            </div>
+
+            <!-- Color Variant Selector -->
+            <div id="colorPickerContainer" class="mt-4">
+              <label class="block text-xs font-bold text-gray-700 dark:text-gray-300 mb-1.5">Select Color:</label>
+              <div id="colorOptions" class="flex flex-wrap gap-2">
+                <!-- Color options generated dynamically -->
+              </div>
+            </div>
+
+            <!-- Size Variant Selector -->
+            <div id="sizePickerContainer" class="mt-3">
+              <label class="block text-xs font-bold text-gray-700 dark:text-gray-300 mb-1.5">Select Size / Variant:</label>
+              <div id="sizeOptions" class="flex flex-wrap gap-2">
+                <!-- Size options generated dynamically -->
+              </div>
+            </div>
+
+            <!-- Quantity Counter -->
+            <div class="mt-4 flex items-center justify-between border-t border-gray-100 dark:border-gray-800 pt-3">
+              <span class="text-xs font-bold text-gray-700 dark:text-gray-300">Quantity:</span>
+              <div class="flex items-center border border-gray-300 dark:border-gray-700 rounded-lg overflow-hidden bg-gray-50 dark:bg-gray-800">
+                <button id="qtyDecreaseBtn" class="px-3 py-1 font-bold text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition">-</button>
+                <span id="pDetailQty" class="px-3 py-1 text-xs font-black text-gray-900 dark:text-white">1</span>
+                <button id="qtyIncreaseBtn" class="px-3 py-1 font-bold text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition">+</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Total & WhatsApp Order Button -->
+          <div class="mt-6 pt-3 border-t border-gray-100 dark:border-gray-800">
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-xs text-gray-500">Estimated Total:</span>
+              <span id="pDetailTotalPrice" class="text-lg font-black text-brand">GH₵ 0.00</span>
+            </div>
+            <button id="pDetailOrderBtn" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs py-3 rounded-xl flex items-center justify-center gap-2 transition shadow-md">
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12.031 0C5.385 0 0 5.385 0 12.031c0 2.122.553 4.195 1.604 6.01L0 24l6.104-1.603a12.003 12.003 0 005.927 1.568h.005c6.645 0 12.03-5.385 12.03-12.031C24.066 5.385 18.676 0 12.031 0z"/></svg>
+              Order Selected Variant via WhatsApp
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- VIP CLUB SUBSCRIPTION MODAL -->
+  <div id="vipModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4 transition-opacity">
+    <div class="bg-white dark:bg-gray-900 rounded-2xl max-w-md w-full p-6 shadow-2xl border border-amber-500/30 relative overflow-hidden">
+      
+      <!-- Background Glow Effect -->
+      <div class="absolute -top-12 -right-12 w-32 h-32 bg-amber-500/10 rounded-full blur-2xl pointer-events-none"></div>
+
+      <!-- Close Button -->
+      <button id="closeVipModalBtn" class="absolute top-4 right-4 text-gray-400 hover:text-gray-900 dark:hover:text-white text-lg">✕</button>
+
+      <!-- Modal Header -->
+      <div class="text-center mt-2">
+        <span class="bg-amber-100 dark:bg-amber-900/40 text-amber-600 dark:text-amber-400 text-xs font-black px-3 py-1 rounded-full tracking-wider uppercase">
+          👑 Exclusive VIP Access
+        </span>
+        <h3 class="text-xl font-black text-gray-900 dark:text-white mt-3">Join Glory Empire VIP</h3>
+        <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">Unlock tier-1 discounts on every product and get priority delivery.</p>
+      </div>
+
+      <!-- VIP Perks List -->
+      <div class="mt-5 space-y-2.5 bg-gray-50 dark:bg-gray-800/60 p-4 rounded-xl border border-gray-100 dark:border-gray-800">
+        <div class="flex items-center gap-2.5 text-xs text-gray-700 dark:text-gray-300">
+          <span class="text-amber-500 font-bold">✓</span>
+          <span>Save up to <strong>30% off retail prices</strong> on every order.</span>
+        </div>
+        <div class="flex items-center gap-2.5 text-xs text-gray-700 dark:text-gray-300">
+          <span class="text-amber-500 font-bold">✓</span>
+          <span>Priority order processing & same-day local dispatch.</span>
+        </div>
+        <div class="flex items-center gap-2.5 text-xs text-gray-700 dark:text-gray-300">
+          <span class="text-amber-500 font-bold">✓</span>
+          <span>Exclusive access to limited stock drops before public launch.</span>
+        </div>
+      </div>
+
+      <!-- VIP Pricing Card -->
+      <div class="mt-4 p-3 bg-gradient-to-r from-amber-500/10 to-brand/10 border border-amber-500/20 rounded-xl flex items-center justify-between">
+        <div>
+          <span class="text-[10px] font-bold text-amber-600 dark:text-amber-400 uppercase">Monthly Subscription</span>
+          <div class="text-lg font-black text-gray-900 dark:text-white">GH₵ 50.00 <span class="text-xs font-normal text-gray-500">/ month</span></div>
+        </div>
+        <span id="vipStatusBadge" class="text-[10px] font-bold px-2.5 py-1 rounded-md bg-gray-200 dark:bg-gray-800 text-gray-600 dark:text-gray-400">
+          Inactive
+        </span>
+      </div>
+
+      <!-- Subscriber Info Inputs -->
+      <div class="mt-4 space-y-3">
+        <div>
+          <label class="block text-xs font-bold text-gray-700 dark:text-gray-300 mb-1">Full Name</label>
+          <input type="text" id="vipCustomerName" placeholder="e.g. Kwame Mensah" class="w-full bg-gray-50 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-lg p-2.5 text-xs text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-brand">
+        </div>
+        <div>
+          <label class="block text-xs font-bold text-gray-700 dark:text-gray-300 mb-1">Email / MoMo Contact</label>
+          <input type="email" id="vipCustomerEmail" placeholder="e.g. kwame@gmail.com" class="w-full bg-gray-50 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-lg p-2.5 text-xs text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-brand">
+        </div>
+      </div>
+
+      <!-- Paystack Action Button -->
+      <button id="paystackVipBtn" class="mt-5 w-full bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white font-black text-xs py-3 rounded-xl flex items-center justify-center gap-2 transition shadow-lg shadow-amber-500/20">
+        👑 Subscribe Now for GH₵ 50.00
+      </button>
+
+    </div>
+  </div>
+
+  <!-- FLOATING BOTTOM CART BAR (VISIBLE WHEN ITEMS ARE IN CART) -->
+  <div id="floatingCartBar" class="fixed bottom-4 left-4 right-4 max-w-md mx-auto bg-gray-900 dark:bg-gray-800 text-white p-3.5 rounded-2xl shadow-2xl flex items-center justify-between z-40 transform translate-y-24 transition-transform duration-300 hidden">
+    <div class="flex items-center gap-3">
+      <div class="relative bg-brand text-white p-2 rounded-xl">
+        🛒
+        <span id="floatingCartBadge" class="absolute -top-1.5 -right-1.5 bg-red-500 text-white text-[10px] font-black w-5 h-5 rounded-full flex items-center justify-center">0</span>
+      </div>
+      <div>
+        <p id="floatingCartCountText" class="text-xs font-bold">0 Items</p>
+        <p id="floatingCartTotal" class="text-sm font-black text-brand">GH₵ 0.00</p>
+      </div>
+    </div>
+    <button id="openCartDrawerBtn" class="bg-brand hover:bg-brand-dark text-white text-xs font-bold px-4 py-2.5 rounded-xl transition shadow-sm">
+      View Cart & Checkout
+    </button>
+  </div>
+
+  <!-- CART SIDE DRAWER -->
+  <div id="cartDrawerOverlay" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden transition-opacity">
+    <div id="cartDrawerPanel" class="fixed inset-y-0 right-0 max-w-md w-full bg-white dark:bg-gray-900 shadow-2xl flex flex-col justify-between transform translate-x-full transition-transform duration-300">
+      
+      <!-- Cart Header -->
+      <div class="p-4 border-b border-gray-200 dark:border-gray-800 flex items-center justify-between bg-gray-50 dark:bg-gray-900/50">
+        <div class="flex items-center gap-2">
+          <h3 class="font-black text-base text-gray-900 dark:text-white">Shopping Cart</h3>
+          <span id="cartHeaderBadge" class="bg-brand/10 text-brand text-xs font-bold px-2 py-0.5 rounded-full">0 items</span>
+        </div>
+        <button id="closeCartDrawerBtn" class="text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 p-1">
+          ✕
+        </button>
+      </div>
+
+      <!-- Cart Items Container -->
+      <div id="cartItemsList" class="p-4 space-y-3 overflow-y-auto flex-1">
+        <!-- Items dynamically injected via JS -->
+      </div>
+
+      <!-- Cart Footer & Multi-Item WhatsApp Checkout -->
+      <div class="p-4 border-t border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900/50 space-y-3">
+        
+        <!-- Summary Breakdown -->
+        <div class="space-y-1.5 text-xs text-gray-600 dark:text-gray-400">
+          <div class="flex justify-between">
+            <span>Subtotal</span>
+            <span id="cartSubtotal" class="font-bold text-gray-900 dark:text-white">GH₵ 0.00</span>
+          </div>
+          <div class="flex justify-between">
+            <span>Tier Savings applied</span>
+            <span id="cartSavings" class="font-bold text-emerald-600 dark:text-emerald-400">- GH₵ 0.00</span>
+          </div>
+          <div class="flex justify-between pt-1 border-t border-gray-200 dark:border-gray-800 text-sm font-black text-gray-900 dark:text-white">
+            <span>Total</span>
+            <span id="cartGrandTotal" class="text-brand">GH₵ 0.00</span>
+          </div>
+        </div>
+
+        <!-- Checkout Actions -->
+        <div class="space-y-2 pt-1">
+          <button id="whatsappCheckoutBtn" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs py-3 rounded-xl flex items-center justify-center gap-2 transition shadow-lg shadow-emerald-600/20">
+            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12.031 0C5.385 0 0 5.385 0 12.031c0 2.122.553 4.195 1.604 6.01L0 24l6.104-1.603a12.003 12.003 0 005.927 1.568h.005c6.645 0 12.03-5.385 12.03-12.031C24.066 5.385 18.676 0 12.031 0z"/></svg>
+            Send Multi-Item Order to WhatsApp
+          </button>
+          <button id="clearCartBtn" class="w-full text-center text-xs text-red-500 hover:text-red-700 dark:hover:text-red-400 font-semibold py-1">
+            Clear Entire Cart
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- APPLICATION JAVASCRIPT SCRIPTS -->
+  <script src="js/products.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
