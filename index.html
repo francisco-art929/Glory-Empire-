@@ -79,21 +79,12 @@
         <svg class="w-4 h-4 absolute left-3.5 top-3 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
       </div>
 
-      <!-- Action Icons & Three-Dot Drawer Trigger -->
-      <div class="flex items-center gap-3">
-        <button id="wishlistBtn" class="relative p-2 text-gray-600 dark:text-gray-300 hover:text-brand">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
-          <span id="wishlistBadge" class="absolute -top-1 -right-1 bg-brand text-white text-xs font-bold w-5 h-5 flex items-center justify-center rounded-full">0</span>
-        </button>
-
-        <button id="cartBtn" class="relative p-2 text-gray-600 dark:text-gray-300 hover:text-brand">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
-          <span id="cartBadge" class="absolute -top-1 -right-1 bg-brand text-white text-xs font-bold w-5 h-5 flex items-center justify-center rounded-full">0</span>
-        </button>
-
-        <!-- Three-Dot Menu Button -->
-        <button id="menuTriggerBtn" class="p-2 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg">
-          <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/></svg>
+      <!-- HEADER RIGHT CONTROLS (3-DOT MENU BUTTON ADDED HERE) -->
+      <div class="flex items-center gap-2">
+        <button id="openDrawerBtn" class="p-2.5 rounded-xl bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-200 font-bold transition flex items-center justify-center" title="Open Menu">
+          <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
+            <path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
+          </svg>
         </button>
       </div>
 
@@ -209,64 +200,175 @@
     </div>
   </footer>
 
-  <!-- THREE-DOT CORNER DRAWER MENU OVERLAY -->
-  <div id="drawerOverlay" class="fixed inset-0 bg-black/50 z-50 hidden transition-opacity">
-    <div id="drawerPanel" class="fixed top-0 right-0 h-full w-80 max-w-full bg-white dark:bg-gray-900 shadow-2xl p-6 flex flex-col justify-between overflow-y-auto transition-transform transform translate-x-full">
+  <!-- CORNER 3-DOT MENU DRAWER OVERLAY -->
+  <div id="drawerOverlay" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden transition-opacity">
+    <div id="drawerPanel" class="fixed top-0 right-0 h-full w-[85%] max-w-xs bg-white dark:bg-gray-900 shadow-2xl transition-transform transform translate-x-full duration-300 flex flex-col justify-between overflow-y-auto">
       
-      <div>
-        <!-- Drawer Header -->
-        <div class="flex items-center justify-between pb-4 border-b border-gray-200 dark:border-gray-800">
-          <div class="flex items-center gap-2">
-            <span class="bg-brand text-white px-2 py-1 rounded-md text-xs font-bold">GE</span>
-            <h3 class="font-black text-lg text-gray-900 dark:text-white">Glory Empire Menu</h3>
+      <!-- 1. HEADER SECTION -->
+      <div class="p-5 border-b border-gray-100 dark:border-gray-800 bg-gradient-to-r from-gray-900 to-black text-white">
+        <div class="flex items-center justify-between">
+          <div>
+            <h3 class="font-black text-base tracking-wide">GLORY EMPIRE</h3>
+            <p id="drawerVipStatus" class="text-[11px] text-amber-400 font-bold mt-0.5">Status: Standard Member</p>
           </div>
-          <button id="closeDrawerBtn" class="text-gray-500 hover:text-gray-900 dark:hover:text-white p-1">
+          <button id="closeDrawerBtn" class="p-1.5 rounded-full bg-white/10 hover:bg-white/20 text-white transition">
             ✕
           </button>
         </div>
+      </div>
 
-        <!-- User Account Section -->
-        <div class="py-4 border-b border-gray-200 dark:border-gray-800">
-          <div class="flex items-center gap-3 mb-3">
-            <div class="w-10 h-10 rounded-full bg-gray-200 dark:bg-gray-700 flex items-center justify-center font-bold text-gray-700 dark:text-gray-200" id="drawerAvatar">
-              👤
-            </div>
-            <div>
-              <h4 class="font-bold text-sm text-gray-900 dark:text-white" id="drawerUserName">Guest Buyer</h4>
-              <p class="text-xs text-amber-600 dark:text-amber-400 font-semibold" id="drawerVipStatus">Status: Standard Member</p>
-            </div>
+      <!-- 2. MENU CONTENT LINKS -->
+      <div class="p-4 space-y-6 flex-1 text-sm text-gray-800 dark:text-gray-200">
+        
+        <!-- VIP & ACCOUNT -->
+        <div>
+          <p class="text-[10px] font-extrabold uppercase tracking-widest text-gray-400 mb-2">Member Hub</p>
+          <ul class="space-y-1">
+            <li>
+              <button id="menuVipHubBtn" class="w-full text-left flex items-center justify-between p-2.5 rounded-xl bg-amber-500/10 text-amber-600 dark:text-amber-400 font-bold hover:bg-amber-500/20 transition">
+                <span>👑 Upgrade to VIP</span>
+                <span class="text-[10px] bg-amber-500 text-white px-2 py-0.5 rounded-full">Save Big</span>
+              </button>
+            </li>
+            <li>
+              <a href="#wishlist" onclick="closeCornerDrawer()" class="flex items-center gap-3 p-2.5 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 font-medium">
+                <span>♥ My Saved Items</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- SHOP CATEGORIES QUICK NAV -->
+        <div>
+          <p class="text-[10px] font-extrabold uppercase tracking-widest text-gray-400 mb-2">Explore Categories</p>
+          <ul class="space-y-1">
+            <li><button onclick="setCategory('Dresses & Outfits'); closeCornerDrawer();" class="w-full text-left p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-xs">👗 Dresses & Outfits</button></li>
+            <li><button onclick="setCategory('Footwear & Sandals'); closeCornerDrawer();" class="w-full text-left p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-xs">👡 Footwear & Sandals</button></li>
+            <li><button onclick="setCategory('Phones & Laptops'); closeCornerDrawer();" class="w-full text-left p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-xs">📱 Phones & Laptops</button></li>
+            <li><button onclick="setCategory('Chains & Accessories'); closeCornerDrawer();" class="w-full text-left p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-xs">📿 Chains & Accessories</button></li>
+            <li><button onclick="setCategory('Perfumes & Beauty'); closeCornerDrawer();" class="w-full text-left p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-xs">🧴 Perfumes & Beauty</button></li>
+          </ul>
+        </div>
+
+        <!-- WHOLESALE & BUSINESS -->
+        <div>
+          <p class="text-[10px] font-extrabold uppercase tracking-widest text-gray-400 mb-2">Business & Wholesale</p>
+          <ul class="space-y-1">
+            <li>
+              <a href="https://wa.me/233540952697?text=Hello%20Glory%20Empire,%20I%20want%20to%20inquire%20about%20Wholesale/Bulk%20purchases." target="_blank" class="flex items-center justify-between p-2.5 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 font-medium">
+                <span>📦 Buy in Bulk (Wholesale)</span>
+                <span class="text-xs text-brand font-bold">Inquire</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- SUPPORT & SETTINGS -->
+        <div>
+          <p class="text-[10px] font-extrabold uppercase tracking-widest text-gray-400 mb-2">Support & Info</p>
+          <ul class="space-y-1">
+            <li>
+              <button id="menuFaqBtn" class="w-full text-left flex items-center gap-3 p-2.5 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 font-medium">
+                <span>🚚 Delivery & Payment Info</span>
+              </button>
+            </li>
+            <li>
+              <button id="menuSettingsBtn" class="w-full text-left flex items-center gap-3 p-2.5 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 font-medium">
+                <span>⚙ App Settings & Location</span>
+              </button>
+            </li>
+            <li>
+              <a href="https://wa.me/233540952697?text=Hello,%20I%20need%20help%20with%20my%20order." target="_blank" class="flex items-center gap-3 p-2.5 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 font-medium text-emerald-600 dark:text-emerald-400">
+                <span>💬 Direct WhatsApp Support</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- 3. FOOTER: DISPLAY & THEME QUICK SWITCH -->
+      <div class="p-4 border-t border-gray-100 dark:border-gray-800 bg-gray-50 dark:bg-gray-800/40 flex items-center justify-between">
+        <span class="text-xs font-bold text-gray-500">Dark Mode</span>
+        <button id="darkModeToggle" class="px-3 py-1.5 rounded-xl bg-gray-200 dark:bg-gray-700 text-xs font-bold text-gray-800 dark:text-gray-200">
+          Toggle Mode
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- DELIVERY & PAYMENT INFO MODAL -->
+  <div id="faqModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-white dark:bg-gray-900 rounded-3xl max-w-md w-full max-h-[85vh] overflow-y-auto shadow-2xl border border-gray-100 dark:border-gray-800">
+      
+      <div class="p-5 border-b border-gray-100 dark:border-gray-800 flex items-center justify-between sticky top-0 bg-white dark:bg-gray-900 z-10">
+        <div class="flex items-center gap-2">
+          <span class="text-xl">🚚</span>
+          <div>
+            <h3 class="font-extrabold text-sm text-gray-900 dark:text-white">Delivery & Payment Guide</h3>
+            <p class="text-[11px] text-gray-400">Glory Empire Order Terms</p>
           </div>
-          <div class="grid grid-cols-2 gap-2">
-            <button id="openAuthBtn" class="bg-brand text-white text-xs font-bold py-2 rounded-lg text-center hover:bg-brand-dark transition">
-              Login / Register
-            </button>
-            <button id="logoutBtn" class="bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 text-xs font-bold py-2 rounded-lg text-center hover:bg-gray-200 hidden">
-              🚪 Log Out
-            </button>
+        </div>
+        <button id="closeFaqModalBtn" class="w-8 h-8 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-500 hover:text-gray-900 dark:hover:text-white transition flex items-center justify-center text-xs font-bold">
+          ✕
+        </button>
+      </div>
+
+      <div class="p-5 space-y-6 text-xs text-gray-600 dark:text-gray-300">
+        <div>
+          <h4 class="font-extrabold text-sm text-gray-900 dark:text-white mb-2 flex items-center gap-1.5">
+            <span>📍</span> Regional Delivery Estimates
+          </h4>
+          <div class="bg-gray-50 dark:bg-gray-800/60 rounded-2xl p-3.5 space-y-2 border border-gray-100 dark:border-gray-800">
+            <div class="flex items-center justify-between py-1 border-b border-gray-200/50 dark:border-gray-700/50">
+              <span class="font-bold text-gray-800 dark:text-gray-200">Kumasi Central</span>
+              <span class="font-extrabold text-brand">GH₵ 15 - 25</span>
+            </div>
+            <div class="flex items-center justify-between py-1 border-b border-gray-200/50 dark:border-gray-700/50">
+              <span class="font-bold text-gray-800 dark:text-gray-200">Accra & Tema</span>
+              <span class="font-extrabold text-brand">GH₵ 30 - 45</span>
+            </div>
+            <div class="flex items-center justify-between py-1 border-b border-gray-200/50 dark:border-gray-700/50">
+              <span class="font-bold text-gray-800 dark:text-gray-200">Sunyani / Takoradi / Cape Coast</span>
+              <span class="font-extrabold text-brand">GH₵ 35 - 50</span>
+            </div>
+            <div class="flex items-center justify-between pt-1">
+              <span class="font-bold text-gray-800 dark:text-gray-200">Tamale & Northern Regions</span>
+              <span class="font-extrabold text-brand">GH₵ 40 - 60</span>
+            </div>
           </div>
         </div>
 
-        <!-- Navigation Links -->
-        <nav class="py-4 space-y-1">
-          <button id="menuVipHubBtn" class="w-full text-left px-3 py-2.5 rounded-lg text-sm font-semibold flex items-center gap-2 text-amber-600 dark:text-amber-400 hover:bg-amber-50 dark:hover:bg-amber-950/30">
-            👑 Monthly VIP Club
-          </button>
-          <button id="menuSettingsBtn" class="w-full text-left px-3 py-2.5 rounded-lg text-sm font-semibold flex items-center gap-2 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800">
-            ⚙️ General Settings
-          </button>
-          <button id="menuWholesaleBtn" class="w-full text-left px-3 py-2.5 rounded-lg text-sm font-semibold flex items-center gap-2 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800">
-            📦 Reseller & Wholesale Hub
-          </button>
-          <button id="menuAdminBtn" class="w-full text-left px-3 py-2.5 rounded-lg text-sm font-semibold flex items-center gap-2 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800">
-            🔒 Admin Dashboard
-          </button>
-        </nav>
+        <div>
+          <h4 class="font-extrabold text-sm text-gray-900 dark:text-white mb-2 flex items-center gap-1.5">
+            <span>💳</span> Accepted Payment Methods
+          </h4>
+          <ul class="space-y-2">
+            <li class="flex items-start gap-2 bg-gray-50 dark:bg-gray-800/60 p-3 rounded-2xl border border-gray-100 dark:border-gray-800">
+              <span class="text-base">📱</span>
+              <div>
+                <p class="font-bold text-gray-900 dark:text-white">Mobile Money (MTN / Telecel / AT)</p>
+                <p class="text-[11px] text-gray-400 mt-0.5">Pay conveniently on delivery or via WhatsApp order confirmation link.</p>
+              </div>
+            </li>
+            <li class="flex items-start gap-2 bg-gray-50 dark:bg-gray-800/60 p-3 rounded-2xl border border-gray-100 dark:border-gray-800">
+              <span class="text-base">🛡️</span>
+              <div>
+                <p class="font-bold text-gray-900 dark:text-white">Paystack Online Checkout</p>
+                <p class="text-[11px] text-gray-400 mt-0.5">Instant activation for VIP Subscriptions & card payments via Visa or Mastercard.</p>
+              </div>
+            </li>
+          </ul>
+        </div>
       </div>
 
-      <!-- Drawer Footer Info -->
-      <div class="pt-4 border-t border-gray-200 dark:border-gray-800 text-xs text-gray-400 text-center">
-        Glory Empire v1.0 • Ghana Delivery
+      <div class="p-4 border-t border-gray-100 dark:border-gray-800 bg-gray-50 dark:bg-gray-800/40">
+        <button id="closeFaqModalBottomBtn" class="w-full bg-black dark:bg-brand text-white py-3 rounded-2xl font-bold text-xs hover:opacity-90 transition">
+          Got It, Back to Shop
+        </button>
       </div>
+
     </div>
   </div>
 
@@ -279,25 +381,12 @@
       </div>
 
       <div class="py-4 space-y-4">
-        <!-- Dark Mode Switch -->
-        <div class="flex items-center justify-between">
-          <div>
-            <h4 class="font-bold text-sm text-gray-900 dark:text-white">Dark Theme Mode</h4>
-            <p class="text-xs text-gray-500">Switch between light and dark visual themes</p>
-          </div>
-          <button id="darkModeToggle" class="w-12 h-6 bg-gray-300 dark:bg-brand rounded-full p-1 transition duration-200 flex items-center justify-start dark:justify-end">
-            <div class="w-4 h-4 bg-white rounded-full shadow-md"></div>
-          </button>
-        </div>
-
-        <!-- Delivery Town Preference -->
         <div>
           <label class="block font-bold text-sm text-gray-900 dark:text-white mb-1">Default Delivery Town/City</label>
           <input type="text" id="settingCityInput" placeholder="e.g. Kumasi, Accra, Sunyani" 
                  class="w-full p-2.5 text-sm bg-gray-100 dark:bg-gray-800 rounded-lg border-none focus:ring-2 focus:ring-brand focus:outline-none">
         </div>
 
-        <!-- Store Currency -->
         <div>
           <label class="block font-bold text-sm text-gray-900 dark:text-white mb-1">Store Currency Display</label>
           <select id="settingCurrencySelect" class="w-full p-2.5 text-sm bg-gray-100 dark:bg-gray-800 rounded-lg border-none focus:ring-2 focus:ring-brand focus:outline-none">
@@ -317,34 +406,25 @@
   <div id="productDetailModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden flex items-end sm:items-center justify-center p-0 sm:p-4 transition-opacity">
     <div class="bg-white dark:bg-gray-900 rounded-t-2xl sm:rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto p-5 sm:p-6 shadow-2xl border border-gray-200 dark:border-gray-800 flex flex-col justify-between">
       
-      <!-- Modal Header -->
       <div class="flex items-center justify-between pb-3 border-b border-gray-100 dark:border-gray-800">
         <span id="pDetailCategory" class="text-xs font-bold uppercase tracking-wider text-brand">Category</span>
         <button id="closeProductModalBtn" class="text-gray-400 hover:text-gray-900 dark:hover:text-white text-lg p-1">✕</button>
       </div>
 
-      <!-- Modal Content Grid -->
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6 py-4">
-        
-        <!-- Image Gallery Column -->
         <div>
           <div class="relative aspect-square bg-gray-100 dark:bg-gray-800 rounded-xl overflow-hidden mb-3 border border-gray-200 dark:border-gray-700">
             <img id="pDetailMainImage" src="" alt="Product Preview" class="w-full h-full object-cover transition duration-200">
             <span id="pDetailBadge" class="absolute top-2 left-2 bg-black text-white text-[10px] font-bold px-2 py-0.5 rounded-md">Badge</span>
           </div>
-          <!-- Image Thumbnails Grid -->
-          <div id="pDetailThumbnails" class="flex items-center gap-2 overflow-x-auto pb-1">
-            <!-- Dynamically populated thumbnails -->
-          </div>
+          <div id="pDetailThumbnails" class="flex items-center gap-2 overflow-x-auto pb-1"></div>
         </div>
 
-        <!-- Specs & Selection Column -->
         <div class="flex flex-col justify-between">
           <div>
             <h2 id="pDetailTitle" class="text-lg font-black text-gray-900 dark:text-white leading-snug">Product Title</h2>
             <p id="pDetailDescription" class="text-xs text-gray-500 dark:text-gray-400 mt-2 leading-relaxed">Product description goes here...</p>
 
-            <!-- Pricing Tier Callout -->
             <div class="mt-4 p-3 bg-gray-50 dark:bg-gray-800/50 rounded-xl border border-gray-200 dark:border-gray-700 space-y-1">
               <div class="flex items-baseline justify-between">
                 <span class="text-xs text-gray-400">Retail Price:</span>
@@ -360,23 +440,16 @@
               </div>
             </div>
 
-            <!-- Color Variant Selector -->
             <div id="colorPickerContainer" class="mt-4">
               <label class="block text-xs font-bold text-gray-700 dark:text-gray-300 mb-1.5">Select Color:</label>
-              <div id="colorOptions" class="flex flex-wrap gap-2">
-                <!-- Color options generated dynamically -->
-              </div>
+              <div id="colorOptions" class="flex flex-wrap gap-2"></div>
             </div>
 
-            <!-- Size Variant Selector -->
             <div id="sizePickerContainer" class="mt-3">
               <label class="block text-xs font-bold text-gray-700 dark:text-gray-300 mb-1.5">Select Size / Variant:</label>
-              <div id="sizeOptions" class="flex flex-wrap gap-2">
-                <!-- Size options generated dynamically -->
-              </div>
+              <div id="sizeOptions" class="flex flex-wrap gap-2"></div>
             </div>
 
-            <!-- Quantity Counter -->
             <div class="mt-4 flex items-center justify-between border-t border-gray-100 dark:border-gray-800 pt-3">
               <span class="text-xs font-bold text-gray-700 dark:text-gray-300">Quantity:</span>
               <div class="flex items-center border border-gray-300 dark:border-gray-700 rounded-lg overflow-hidden bg-gray-50 dark:bg-gray-800">
@@ -387,7 +460,6 @@
             </div>
           </div>
 
-          <!-- Total & WhatsApp Order Button -->
           <div class="mt-6 pt-3 border-t border-gray-100 dark:border-gray-800">
             <div class="flex items-center justify-between mb-3">
               <span class="text-xs text-gray-500">Estimated Total:</span>
@@ -408,13 +480,9 @@
   <div id="vipModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4 transition-opacity">
     <div class="bg-white dark:bg-gray-900 rounded-2xl max-w-md w-full p-6 shadow-2xl border border-amber-500/30 relative overflow-hidden">
       
-      <!-- Background Glow Effect -->
       <div class="absolute -top-12 -right-12 w-32 h-32 bg-amber-500/10 rounded-full blur-2xl pointer-events-none"></div>
-
-      <!-- Close Button -->
       <button id="closeVipModalBtn" class="absolute top-4 right-4 text-gray-400 hover:text-gray-900 dark:hover:text-white text-lg">✕</button>
 
-      <!-- Modal Header -->
       <div class="text-center mt-2">
         <span class="bg-amber-100 dark:bg-amber-900/40 text-amber-600 dark:text-amber-400 text-xs font-black px-3 py-1 rounded-full tracking-wider uppercase">
           👑 Exclusive VIP Access
@@ -423,7 +491,6 @@
         <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">Unlock tier-1 discounts on every product and get priority delivery.</p>
       </div>
 
-      <!-- VIP Perks List -->
       <div class="mt-5 space-y-2.5 bg-gray-50 dark:bg-gray-800/60 p-4 rounded-xl border border-gray-100 dark:border-gray-800">
         <div class="flex items-center gap-2.5 text-xs text-gray-700 dark:text-gray-300">
           <span class="text-amber-500 font-bold">✓</span>
@@ -433,13 +500,8 @@
           <span class="text-amber-500 font-bold">✓</span>
           <span>Priority order processing & same-day local dispatch.</span>
         </div>
-        <div class="flex items-center gap-2.5 text-xs text-gray-700 dark:text-gray-300">
-          <span class="text-amber-500 font-bold">✓</span>
-          <span>Exclusive access to limited stock drops before public launch.</span>
-        </div>
       </div>
 
-      <!-- VIP Pricing Card -->
       <div class="mt-4 p-3 bg-gradient-to-r from-amber-500/10 to-brand/10 border border-amber-500/20 rounded-xl flex items-center justify-between">
         <div>
           <span class="text-[10px] font-bold text-amber-600 dark:text-amber-400 uppercase">Monthly Subscription</span>
@@ -450,7 +512,6 @@
         </span>
       </div>
 
-      <!-- Subscriber Info Inputs -->
       <div class="mt-4 space-y-3">
         <div>
           <label class="block text-xs font-bold text-gray-700 dark:text-gray-300 mb-1">Full Name</label>
@@ -462,7 +523,6 @@
         </div>
       </div>
 
-      <!-- Paystack Action Button -->
       <button id="paystackVipBtn" class="mt-5 w-full bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white font-black text-xs py-3 rounded-xl flex items-center justify-center gap-2 transition shadow-lg shadow-amber-500/20">
         👑 Subscribe Now for GH₵ 50.00
       </button>
@@ -470,79 +530,6 @@
     </div>
   </div>
 
-  <!-- FLOATING BOTTOM CART BAR (VISIBLE WHEN ITEMS ARE IN CART) -->
-  <div id="floatingCartBar" class="fixed bottom-4 left-4 right-4 max-w-md mx-auto bg-gray-900 dark:bg-gray-800 text-white p-3.5 rounded-2xl shadow-2xl flex items-center justify-between z-40 transform translate-y-24 transition-transform duration-300 hidden">
-    <div class="flex items-center gap-3">
-      <div class="relative bg-brand text-white p-2 rounded-xl">
-        🛒
-        <span id="floatingCartBadge" class="absolute -top-1.5 -right-1.5 bg-red-500 text-white text-[10px] font-black w-5 h-5 rounded-full flex items-center justify-center">0</span>
-      </div>
-      <div>
-        <p id="floatingCartCountText" class="text-xs font-bold">0 Items</p>
-        <p id="floatingCartTotal" class="text-sm font-black text-brand">GH₵ 0.00</p>
-      </div>
-    </div>
-    <button id="openCartDrawerBtn" class="bg-brand hover:bg-brand-dark text-white text-xs font-bold px-4 py-2.5 rounded-xl transition shadow-sm">
-      View Cart & Checkout
-    </button>
-  </div>
-
-  <!-- CART SIDE DRAWER -->
-  <div id="cartDrawerOverlay" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden transition-opacity">
-    <div id="cartDrawerPanel" class="fixed inset-y-0 right-0 max-w-md w-full bg-white dark:bg-gray-900 shadow-2xl flex flex-col justify-between transform translate-x-full transition-transform duration-300">
-      
-      <!-- Cart Header -->
-      <div class="p-4 border-b border-gray-200 dark:border-gray-800 flex items-center justify-between bg-gray-50 dark:bg-gray-900/50">
-        <div class="flex items-center gap-2">
-          <h3 class="font-black text-base text-gray-900 dark:text-white">Shopping Cart</h3>
-          <span id="cartHeaderBadge" class="bg-brand/10 text-brand text-xs font-bold px-2 py-0.5 rounded-full">0 items</span>
-        </div>
-        <button id="closeCartDrawerBtn" class="text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 p-1">
-          ✕
-        </button>
-      </div>
-
-      <!-- Cart Items Container -->
-      <div id="cartItemsList" class="p-4 space-y-3 overflow-y-auto flex-1">
-        <!-- Items dynamically injected via JS -->
-      </div>
-
-      <!-- Cart Footer & Multi-Item WhatsApp Checkout -->
-      <div class="p-4 border-t border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900/50 space-y-3">
-        
-        <!-- Summary Breakdown -->
-        <div class="space-y-1.5 text-xs text-gray-600 dark:text-gray-400">
-          <div class="flex justify-between">
-            <span>Subtotal</span>
-            <span id="cartSubtotal" class="font-bold text-gray-900 dark:text-white">GH₵ 0.00</span>
-          </div>
-          <div class="flex justify-between">
-            <span>Tier Savings applied</span>
-            <span id="cartSavings" class="font-bold text-emerald-600 dark:text-emerald-400">- GH₵ 0.00</span>
-          </div>
-          <div class="flex justify-between pt-1 border-t border-gray-200 dark:border-gray-800 text-sm font-black text-gray-900 dark:text-white">
-            <span>Total</span>
-            <span id="cartGrandTotal" class="text-brand">GH₵ 0.00</span>
-          </div>
-        </div>
-
-        <!-- Checkout Actions -->
-        <div class="space-y-2 pt-1">
-          <button id="whatsappCheckoutBtn" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs py-3 rounded-xl flex items-center justify-center gap-2 transition shadow-lg shadow-emerald-600/20">
-            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12.031 0C5.385 0 0 5.385 0 12.031c0 2.122.553 4.195 1.604 6.01L0 24l6.104-1.603a12.003 12.003 0 005.927 1.568h.005c6.645 0 12.03-5.385 12.03-12.031C24.066 5.385 18.676 0 12.031 0z"/></svg>
-            Send Multi-Item Order to WhatsApp
-          </button>
-          <button id="clearCartBtn" class="w-full text-center text-xs text-red-500 hover:text-red-700 dark:hover:text-red-400 font-semibold py-1">
-            Clear Entire Cart
-          </button>
-        </div>
-
-      </div>
-
-    </div>
-  </div>
-
-  <!-- APPLICATION SCRIPT LINK -->
   <script src="app.js"></script>
 </body>
 </html>

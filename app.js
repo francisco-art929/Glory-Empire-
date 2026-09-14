@@ -53,8 +53,8 @@ const PRODUCTS = [
     wholesalePrice: 70.00,
     description: "Heavyweight tarnish-resistant gold plated chain designed for long-lasting shine and durability.",
     images: [
-  "images/chains.webp"
-],
+      "images/chains.webp"
+    ],
     colors: ["Gold", "Silver"],
     sizes: ["20 Inch", "24 Inch"]
   },
@@ -72,6 +72,38 @@ const PRODUCTS = [
     ],
     colors: ["Original Bottle"],
     sizes: ["100ml"]
+  },
+  {
+    id: "ge-prod-005",
+    title: "Elegant Floral Satin Dinner Dress",
+    category: "Dresses & Outfits",
+    badge: "Top Pick",
+    retailPrice: 240.00,
+    vipPrice: 180.00,
+    wholesalePrice: 155.00,
+    description: "Premium handcrafted satin gown designed for special occasions, evening events, and elegant outings.",
+    images: [
+      "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?auto=format&fit=crop&w=600&q=80"
+    ],
+    colors: ["Emerald Green", "Midnight Black", "Ruby Red"],
+    sizes: ["S", "M", "L", "XL"]
+  },
+   {
+    id: "ge-prod-006",
+    title: "Lusury Watch  (very soft to wear and top qualities)",
+    category: "Phones & Laptops",
+    badge: "Hot Sale",
+    retailPrice: 250.00,
+    vipPrice: 230.00,
+    wholesalePrice: 200.00,
+    description: "Lusury watch, 100% top qualite, very comfortable to wear, look good on both girls and boys.",
+    images: [
+      "images/watch1.webp",
+      "images/watch2.webp",
+      "images/watch3.webp"
+    ],
+    colors: ["Space Gray", "Silver", "black"],
+    sizes: ["40mm Standard"]
   }
 ];
 
@@ -167,7 +199,14 @@ function renderCategoryChips() {
   const container = document.getElementById('categoryChips');
   if (!container) return;
 
-  const categories = ["All Items", Footwear & Sandals", "Phones & Laptops", "Chains & Accessories", "Perfumes & Beauty"];
+  const categories = [
+    "All Items", 
+    "Dresses & Outfits", 
+    "Footwear & Sandals", 
+    "Phones & Laptops", 
+    "Chains & Accessories", 
+    "Perfumes & Beauty"
+  ];
   
   container.innerHTML = categories.map(cat => {
     const isActive = state.activeCategory === cat;
@@ -480,14 +519,14 @@ function closeCartDrawer() {
 }
 
 // Corner Menu Three-Dot Drawer Toggle
-document.getElementById('menuTriggerBtn')?.addEventListener('click', () => {
+function openCornerDrawer() {
   const overlay = document.getElementById('drawerOverlay');
   const panel = document.getElementById('drawerPanel');
   if (overlay && panel) {
     overlay.classList.remove('hidden');
     setTimeout(() => panel.classList.remove('translate-x-full'), 10);
   }
-});
+}
 
 function closeCornerDrawer() {
   const overlay = document.getElementById('drawerOverlay');
@@ -497,6 +536,17 @@ function closeCornerDrawer() {
     setTimeout(() => overlay.classList.add('hidden'), 300);
   }
 }
+
+// Expose drawer functions globally for inline onclick handlers in HTML
+window.openCornerDrawer = openCornerDrawer;
+window.closeCornerDrawer = closeCornerDrawer;
+
+// Bind all possible open drawer trigger button IDs
+const menuTriggerBtn = document.getElementById('menuTriggerBtn');
+const openDrawerBtn = document.getElementById('openDrawerBtn');
+
+if (menuTriggerBtn) menuTriggerBtn.addEventListener('click', openCornerDrawer);
+if (openDrawerBtn) openDrawerBtn.addEventListener('click', openCornerDrawer);
 
 // Event Listeners for Closing Overlays
 document.getElementById('closeDrawerBtn')?.addEventListener('click', closeCornerDrawer);
@@ -565,6 +615,26 @@ document.getElementById('saveSettingsBtn')?.addEventListener('click', () => {
   document.getElementById('settingsModal').classList.add('hidden');
   renderProducts();
   updateCartUI();
+});
+// FAQ / Delivery Info Modal Handlers
+document.getElementById('menuFaqBtn')?.addEventListener('click', () => {
+  closeCornerDrawer();
+  document.getElementById('faqModal').classList.remove('hidden');
+});
+
+document.getElementById('closeFaqModalBtn')?.addEventListener('click', () => {
+  document.getElementById('faqModal').classList.add('hidden');
+});
+
+document.getElementById('closeFaqModalBottomBtn')?.addEventListener('click', () => {
+  document.getElementById('faqModal').classList.add('hidden');
+});
+
+// Close FAQ modal when clicking background overlay
+document.getElementById('faqModal')?.addEventListener('click', (e) => {
+  if (e.target.id === 'faqModal') {
+    document.getElementById('faqModal').classList.add('hidden');
+  }
 });
 
 // 9. PAYSTACK VIP SUBSCRIPTION INITIALIZATION
